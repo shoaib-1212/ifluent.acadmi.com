@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>iFluent English & German | Speak to Lead</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+  :root {
+    --navy: #0B1F4B;
+    --navy-mid: #122B6A;
+    --navy-light: #1a3a8f;
+    --gold: #C9A84C;
+    --gold-light: #e8c96d;
+    --gold-pale: #fdf5e4;
+    --white: #ffffff;
+    --off-white: #f8f9fc;
+    --text-dark: #111827;
+    --text-mid: #4B5563;
+    --text-light: #9CA3AF;
+    --border: #e5e7eb;
+    --radius: 16px;
+    --shadow-sm: 0 4px 20px rgba(11,31,75,0.07);
+    --shadow-md: 0 8px 40px rgba(11,31,75,0.12);
+    --shadow-lg: 0 20px 60px rgba(11,31,75,0.18);
+    --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-dark);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    background: rgba(11,31,75,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    transition: var(--transition);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 900;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    transition: color var(--transition);
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy) !important;
+    padding: 0.5rem 1.4rem; border-radius: 50px;
+    font-weight: 600 !important;
+  }
+  .nav-cta:hover { color: var(--navy) !important; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(201,168,76,0.4); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 25px; height: 2px; background: var(--white); border-radius: 4px; transition: var(--transition); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, #0d2857 100%);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    padding: 120px 5% 80px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Floating orbs */
+  .hero::after {
+    content: '';
+    position: absolute; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    right: -100px; top: -100px; border-radius: 50%;
+    animation: pulse-orb 6s ease-in-out infinite;
+  }
+
+  @keyframes pulse-orb {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+
+  .hero-blob {
+    position: absolute; width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    bottom: -80px; left: 10%; border-radius: 50%;
+    animation: pulse-orb 8s ease-in-out infinite reverse;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 700px;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold-light); font-size: 0.82rem; font-weight: 500;
+    padding: 6px 16px; border-radius: 50px; margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+    animation: fadeUp 0.9s ease 0.1s both;
+  }
+  .hero-badge i { font-size: 0.75rem; }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 900; line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.9s ease 0.2s both;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  .hero p {
+    font-size: 1.15rem; color: rgba(255,255,255,0.75);
+    line-height: 1.7; margin-bottom: 2.5rem; max-width: 520px;
+    font-weight: 300;
+    animation: fadeUp 0.9s ease 0.3s both;
+  }
+
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.9s ease 0.4s both;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy); font-weight: 700; font-size: 1rem;
+    padding: 0.9rem 2.2rem; border-radius: 50px; border: none;
+    cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: var(--transition);
+    box-shadow: 0 8px 24px rgba(201,168,76,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(201,168,76,0.45); }
+
+  .btn-secondary {
+    background: transparent; color: var(--white);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    padding: 0.9rem 2.2rem; border-radius: 50px;
+    font-weight: 500; font-size: 1rem; cursor: pointer;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: var(--transition);
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3rem; flex-wrap: wrap;
+    animation: fadeUp 0.9s ease 0.5s both;
+  }
+  .stat-item { }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 900; color: var(--gold-light);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.55); margin-top: 4px; font-weight: 400; }
+
+  .hero-image-area {
+    position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+    width: 420px; height: 420px; z-index: 1;
+    display: flex; align-items: center; justify-content: center;
+    animation: fadeUp 0.9s ease 0.3s both;
+  }
+  @media (max-width: 1000px) { .hero-image-area { display: none; } }
+
+  .hero-circle {
+    width: 380px; height: 380px; border-radius: 50%;
+    border: 2px solid rgba(201,168,76,0.2);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    animation: rotate-slow 20s linear infinite;
+  }
+  @keyframes rotate-slow { to { transform: rotate(360deg); } }
+
+  .hero-circle-inner {
+    width: 300px; height: 300px; border-radius: 50%;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.15);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px; animation: rotate-slow 20s linear infinite reverse;
+  }
+
+  .hero-circle-inner i {
+    font-size: 3.5rem; color: var(--gold); opacity: 0.6;
+  }
+  .hero-circle-inner p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; color: rgba(255,255,255,0.5);
+    animation: none; margin: 0; font-weight: 400;
+  }
+
+  .orbit-dot {
+    position: absolute; width: 12px; height: 12px; border-radius: 50%;
+    background: var(--gold); box-shadow: 0 0 10px var(--gold);
+  }
+  .orbit-dot:nth-child(1) { top: 10px; left: 50%; transform: translateX(-50%); }
+  .orbit-dot:nth-child(2) { bottom: 10px; left: 50%; transform: translateX(-50%); }
+  .orbit-dot:nth-child(3) { left: 10px; top: 50%; transform: translateY(-50%); }
+  .orbit-dot:nth-child(4) { right: 10px; top: 50%; transform: translateY(-50%); }
+
+  /* ─── SECTION COMMONS ─── */
+  section { padding: 90px 5%; }
+
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .section-tag::before {
+    content: ''; width: 24px; height: 2px; background: var(--gold); border-radius: 2px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 900; line-height: 1.2; color: var(--navy);
+    margin-bottom: 1rem;
+  }
+
+  .section-title em { font-style: normal; color: var(--gold); }
+
+  .section-sub {
+    font-size: 1.05rem; color: var(--text-mid); line-height: 1.7;
+    max-width: 560px; font-weight: 300;
+  }
+
+  .section-header { margin-bottom: 3.5rem; }
+
+  /* ─── WHY IFLUENT ─── */
+  .why-section { background: var(--off-white); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+
+  .why-card {
+    background: var(--white); border-radius: var(--radius);
+    padding: 2rem; border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    position: relative; overflow: hidden;
+  }
+  .why-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    transform: scaleX(0); transform-origin: left;
+    transition: var(--transition);
+  }
+  .why-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+  .why-card:hover::before { transform: scaleX(1); }
+
+  .why-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: var(--gold-pale); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.2rem;
+  }
+  .why-icon i { font-size: 1.3rem; color: var(--gold); }
+
+  .why-card h3 { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
+  .why-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ─── COURSES ─── */
+  .courses-section { background: var(--white); }
+
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+  }
+
+  .course-card {
+    border-radius: var(--radius); overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    background: var(--white);
+    display: flex; flex-direction: column;
+  }
+  .course-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+
+  .card-header {
+    padding: 1.8rem 1.8rem 1.4rem;
+    position: relative; overflow: hidden;
+  }
+
+  .card-header.blue   { background: linear-gradient(135deg, #0B1F4B, #1a3a8f); }
+  .card-header.green  { background: linear-gradient(135deg, #064e3b, #065f46); }
+  .card-header.purple { background: linear-gradient(135deg, #3b1f6b, #5b2d8e); }
+  .card-header.german { background: linear-gradient(135deg, #7c1d1d, #b91c1c); }
+
+  .card-header::after {
+    content: ''; position: absolute; right: -20px; top: -20px;
+    width: 120px; height: 120px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .card-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .card-icon i { font-size: 1.3rem; color: var(--white); }
+
+  .card-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700; color: var(--white);
+    line-height: 1.3; margin-bottom: 0.5rem;
+  }
+
+  .card-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .badge {
+    font-size: 0.75rem; font-weight: 500;
+    padding: 3px 10px; border-radius: 50px;
+    background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .card-body { padding: 1.6rem 1.8rem; flex: 1; }
+
+  .card-meta {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.8rem; margin-bottom: 1.4rem;
+  }
+  .meta-item { }
+  .meta-label {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text-light); font-weight: 500; margin-bottom: 2px;
+  }
+  .meta-value { font-size: 0.95rem; font-weight: 600; color: var(--navy); }
+  .meta-value.price { color: var(--gold); font-size: 1.1rem; }
+
+  .card-features { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .card-features li {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 0.88rem; color: var(--text-mid); line-height: 1.4;
+  }
+  .card-features li::before {
+    content: '✓'; width: 18px; height: 18px; min-width: 18px;
+    background: var(--gold-pale); color: var(--gold);
+    border-radius: 50%; font-size: 0.7rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+
+  .card-footer {
+    padding: 1.2rem 1.8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .btn-card {
+    width: 100%; padding: 0.75rem; border-radius: 50px;
+    border: 2px solid var(--navy); background: transparent;
+    color: var(--navy); font-weight: 600; font-size: 0.9rem;
+    cursor: pointer; transition: var(--transition);
+    text-align: center; display: block; text-decoration: none;
+  }
+  .btn-card:hover {
+    background: var(--navy); color: var(--white);
+  }
+
+  /* Weekend banner */
+  .weekend-banner {
+    margin-top: 2.5rem;
+    background: linear-gradient(135deg, var(--gold-pale), #fef9ec);
+    border: 1.5px solid rgba(201,168,76,0.3);
+    border-radius: var(--radius); padding: 1.5rem 2rem;
+    display: flex; align-items: center; gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+  .weekend-banner i { font-size: 2rem; color: var(--gold); }
+  .weekend-banner h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--navy); }
+  .weekend-banner p { font-size: 0.9rem; color: var(--text-mid); }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials-section { background: var(--navy); overflow: hidden; }
+  .testimonials-section .section-title { color: var(--white); }
+  .testimonials-section .section-sub { color: rgba(255,255,255,0.6); }
+  .testimonials-section .section-tag { color: var(--gold-light); }
+
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+
+  .testi-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius); padding: 2rem;
+    transition: var(--transition);
+  }
+  .testi-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-4px); }
+
+  .stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 2px; }
+  .testi-text { font-size: 0.95rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 1.4rem; font-weight: 300; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-weight: 700;
+    color: var(--navy); font-size: 1rem;
+  }
+  .author-name { font-weight: 600; color: var(--white); font-size: 0.9rem; }
+  .author-course { font-size: 0.78rem; color: rgba(255,255,255,0.45); }
+
+  /* ─── CONTACT ─── */
+  .contact-section { background: var(--off-white); }
+
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: start;
+    margin-top: 3rem;
+  }
+  @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+  .contact-info { }
+  .contact-detail {
+    display: flex; align-items: flex-start; gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 12px; min-width: 44px;
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    display: flex; align-items: center; justify-content: center;
+  }
+  .contact-icon i { color: var(--gold); font-size: 1rem; }
+  .contact-detail h4 { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); margin-bottom: 4px; }
+  .contact-detail p, .contact-detail a {
+    font-size: 1rem; color: var(--navy); font-weight: 500;
+    text-decoration: none;
+  }
+  .contact-detail a:hover { color: var(--gold); }
+
+  .map-placeholder {
+    margin-top: 1.5rem; border-radius: var(--radius); overflow: hidden;
+    border: 1px solid var(--border); height: 200px;
+    background: linear-gradient(135deg, #e8edf5, #dde4f0);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 10px; color: var(--navy-mid);
+  }
+  .map-placeholder i { font-size: 2.5rem; color: var(--navy); opacity: 0.4; }
+  .map-placeholder p { font-size: 0.88rem; color: var(--text-mid); }
+
+  /* Contact form */
+  .contact-form { background: var(--white); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-md); border: 1px solid var(--border); }
+  .contact-form h3 {
+    font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy);
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; font-size: 0.82rem; font-weight: 500; color: var(--text-mid); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 0.8rem 1rem; border-radius: 10px;
+    border: 1.5px solid var(--border); background: var(--off-white);
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--text-dark);
+    transition: var(--transition); outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold); background: var(--white);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+  }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+
+  .btn-submit {
+    width: 100%; padding: 0.95rem;
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    color: var(--white); border: none; border-radius: 50px;
+    font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600;
+    cursor: pointer; transition: var(--transition);
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .btn-submit:hover { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #080f26; padding: 3rem 5% 2rem;
+    color: rgba(255,255,255,0.5);
+  }
+  .footer-inner {
+    display: flex; justify-content: space-between; flex-wrap: wrap;
+    gap: 2rem; margin-bottom: 2rem;
+  }
+  .footer-brand { }
+  .footer-logo {
+    font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900;
+    color: var(--white); margin-bottom: 0.5rem;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-tagline { font-size: 0.88rem; color: rgba(255,255,255,0.4); font-style: italic; }
+
+  .footer-links h4 { color: var(--gold-light); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+  .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.9rem; transition: color var(--transition); }
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 1.5rem; display: flex;
+    justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    font-size: 0.82rem;
+  }
+
+  .social-links { display: flex; gap: 0.75rem; }
+  .social-links a {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;
+    transition: var(--transition);
+  }
+  .social-links a:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─── MOBILE MENU ─── */
+  .mobile-menu {
+    position: fixed; top: 72px; left: 0; width: 100%; background: var(--navy);
+    padding: 1.5rem 5%; z-index: 999; display: none;
+    flex-direction: column; gap: 1rem;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: rgba(255,255,255,0.8); text-decoration: none;
+    font-size: 1rem; padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .mobile-menu a:last-child { border: none; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero { padding: 100px 5% 60px; text-align: left; }
+    .hero-btns { flex-direction: column; }
+    .hero-stats { gap: 1.5rem; }
+    section { padding: 60px 5%; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .courses-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .why-grid { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: column; gap: 1rem; }
+  }
+
+  /* ─── WHATSAPP FLOAT ─── */
+  .wa-float {
+    position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+  }
+
+  .wa-btn {
+    display: flex; align-items: center; gap: 10px;
+    background: #25D366;
+    color: white; text-decoration: none;
+    padding: 14px 22px; border-radius: 50px;
+    font-size: 1rem; font-weight: 700;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+    transition: var(--transition);
+    position: relative; white-space: nowrap;
+  }
+
+  .wa-btn i { font-size: 1.4rem; }
+
+  .wa-btn::before {
+    content: '';
+    position: absolute; inset: -4px; border-radius: 50px;
+    border: 2px solid rgba(37,211,102,0.4);
+    animation: wa-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes wa-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.05); opacity: 0; }
+  }
+
+  .wa-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(37,211,102,0.6); background: #1ebe5d; }
+
+  /* scroll reveal */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <div class="nav-logo">i<span>Fluent</span></div>
+  <ul class="nav-links">
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Enroll Now</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#courses" onclick="toggleMenu()">Courses</a>
+  <a href="#why" onclick="toggleMenu()">Why Us</a>
+  <a href="#testimonials" onclick="toggleMenu()">Reviews</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="#contact" onclick="toggleMenu()" style="color:var(--gold); font-weight:600;">Enroll Now →</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-blob"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-star"></i> Delhi's Premier Language Academy · 15+ Years</div>
+    <h1>Upgrade Your<br><em>Communication Skills</em><br>with iFluent</h1>
+    <p>Speak Confidently. Grow Professionally. From English fluency to German mastery — your success story starts here.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary"><i class="fas fa-graduation-cap"></i> Enroll Now</a>
+      <a href="#courses" class="btn-secondary"><i class="fas fa-book-open"></i> View Courses</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5000+</div>
+        <div class="stat-label">Students Trained</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">A1–B2</div>
+        <div class="stat-label">German Levels</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Telc & Goethe</div>
+        <div class="stat-label">Exam Ready</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-image-area">
+    <div class="hero-circle">
+      <div class="orbit-dot"></div>
+      <div class="orbit-dot"></div>
+      <div class="orbit-dot"></div>
+      <div class="orbit-dot"></div>
+      <div class="hero-circle-inner">
+        <i class="fas fa-comments"></i>
+        <p>Speak to Lead</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY IFLUENT ── -->
+<section class="why-section" id="why">
+  <div class="section-header reveal">
+    <div class="section-tag">Why Choose Us</div>
+    <h2 class="section-title">Built for Real <em>Results</em></h2>
+    <p class="section-sub">Not just theory — practical communication training that transforms careers and opens global doors.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+      <h3>Expert Trainers</h3>
+      <p>Qualified instructors with 15+ years of classroom and corporate training experience.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon"><i class="fas fa-users"></i></div>
+      <h3>Small Batches</h3>
+      <p>Personalized attention in every class — not a crowd but a focused learning group.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon"><i class="fas fa-certificate"></i></div>
+      <h3>Exam Aligned</h3>
+      <p>German courses fully aligned to Goethe Institut and Telc exam formats and syllabi.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon"><i class="fas fa-briefcase"></i></div>
+      <h3>Job Placement Help</h3>
+      <p>Dedicated placement assistance and career guidance post-course completion.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon"><i class="fas fa-globe"></i></div>
+      <h3>Study Abroad Guidance</h3>
+      <p>Expert consultancy for studying in Germany and other European destinations.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon"><i class="fas fa-calendar-alt"></i></div>
+      <h3>Flexible Schedules</h3>
+      <p>Weekday and weekend batches to fit your life without compromising quality.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── COURSES ── -->
+<section class="courses-section" id="courses">
+  <div class="section-header reveal">
+    <div class="section-tag">Our Programmes</div>
+    <h2 class="section-title">Courses That <em>Transform</em></h2>
+    <p class="section-sub">From foundational English to advanced German — find the course that fits your goal.</p>
+  </div>
+
+  <div class="courses-grid">
+
+    <!-- English Spoken & Grammar -->
+    <div class="course-card reveal">
+      <div class="card-header blue">
+        <div class="card-icon"><i class="fas fa-comments"></i></div>
+        <h3>English Spoken & Grammar</h3>
+        <div class="card-badges">
+          <span class="badge"><i class="fas fa-clock"></i> 1–2 Months</span>
+          <span class="badge"><i class="fas fa-calendar"></i> 5 Days/Week</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="meta-item">
+            <div class="meta-label">Course Fee</div>
+            <div class="meta-value price">₹4,000</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Duration</div>
+            <div class="meta-value">1–2 Months</div>
+          </div>
+        </div>
+        <ul class="card-features">
+          <li>How verbs change according to time</li>
+          <li>Helping verbs usage in depth</li>
+          <li>Core grammar concepts simplified</li>
+          <li>Read & Observe structured tasks</li>
+          <li>Listen & Observe activities</li>
+          <li>Q&A framing and fluency drills</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <a href="#contact" class="btn-card">Enquire Now</a>
+      </div>
+    </div>
+
+    <!-- English Environment Club -->
+    <div class="course-card reveal">
+      <div class="card-header green">
+        <div class="card-icon"><i class="fas fa-microphone-alt"></i></div>
+        <h3>English Environment Club</h3>
+        <div class="card-badges">
+          <span class="badge"><i class="fas fa-clock"></i> 3 Months</span>
+          <span class="badge"><i class="fas fa-calendar"></i> 5 Days/Week</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="meta-item">
+            <div class="meta-label">Course Fee</div>
+            <div class="meta-value price">₹8,000</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Duration</div>
+            <div class="meta-value">3 Months</div>
+          </div>
+        </div>
+        <ul class="card-features">
+          <li>Role-plays & real conversations</li>
+          <li>Group discussions & debates</li>
+          <li>News reporting & presentation</li>
+          <li>Brainstorming sessions</li>
+          <li>Public speaking development</li>
+          <li>C1 vocabulary & advanced communication</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <a href="#contact" class="btn-card">Enquire Now</a>
+      </div>
+    </div>
+
+    <!-- Airhostess & Ground Staff -->
+    <div class="course-card reveal">
+      <div class="card-header purple">
+        <div class="card-icon"><i class="fas fa-plane"></i></div>
+        <h3>Airhostess & Ground Staff Preparation</h3>
+        <div class="card-badges">
+          <span class="badge"><i class="fas fa-clock"></i> 3 / 6 Months</span>
+          <span class="badge"><i class="fas fa-calendar"></i> 5 Days/Week</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="meta-item">
+            <div class="meta-label">Course Fee</div>
+            <div class="meta-value price">₹20,000</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Duration</div>
+            <div class="meta-value">3 / 6 Months</div>
+          </div>
+        </div>
+        <ul class="card-features">
+          <li>Aviation English communication</li>
+          <li>Role-plays & situational exercises</li>
+          <li>Vocabulary for aviation sector</li>
+          <li>Personality development</li>
+          <li>Grooming & makeup training</li>
+          <li>Mock interviews + German A1</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <a href="#contact" class="btn-card">Enquire Now</a>
+      </div>
+    </div>
+
+    <!-- German Language -->
+    <div class="course-card reveal">
+      <div class="card-header german">
+        <div class="card-icon"><i class="fas fa-language"></i></div>
+        <h3>German Language Course</h3>
+        <div class="card-badges">
+          <span class="badge">A1 to B2</span>
+          <span class="badge">Goethe & Telc</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="meta-item">
+            <div class="meta-label">Fee Per Level</div>
+            <div class="meta-value price">₹10,000</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Duration / Level</div>
+            <div class="meta-value">2 Months</div>
+          </div>
+        </div>
+        <ul class="card-features">
+          <li>A1 to B2 structured levels</li>
+          <li>Each level: 2 months duration</li>
+          <li>Fast track option: 6 months</li>
+          <li>Free Goethe Institut exam prep</li>
+          <li>Free Telc exam preparation</li>
+          <li>Study abroad pathway support</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <a href="#contact" class="btn-card">Enquire Now</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Weekend Banner -->
+  <div class="weekend-banner reveal">
+    <i class="fas fa-sun"></i>
+    <div>
+      <h4>Weekend Batches Also Available</h4>
+      <p>Can't make it on weekdays? We have Saturday & Sunday batches for all courses — same quality, flexible timing.</p>
+    </div>
+    <a href="#contact" class="btn-primary" style="margin-left:auto; white-space:nowrap;">Book a Seat</a>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials-section" id="testimonials">
+  <div class="section-header reveal">
+    <div class="section-tag">Student Reviews</div>
+    <h2 class="section-title" style="color:var(--white);">What Our Students <em>Say</em></h2>
+    <p class="section-sub">Real results from real students across Delhi.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"iFluent completely changed how I speak in meetings. My confidence at work has improved remarkably after just 2 months."</p>
+      <div class="testi-author">
+        <div class="author-avatar">P</div>
+        <div>
+          <div class="author-name">Priya Sharma</div>
+          <div class="author-course">English Environment Club</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"I cleared my Goethe A2 exam after failing twice. The structured practice and personal guidance made all the difference."</p>
+      <div class="testi-author">
+        <div class="author-avatar">R</div>
+        <div>
+          <div class="author-name">Rahul Mehta</div>
+          <div class="author-course">German Language — A2</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"The airhostess course prepared me for everything — grooming, communication, mock interviews. I got placed within 3 months!"</p>
+      <div class="testi-author">
+        <div class="author-avatar">A</div>
+        <div>
+          <div class="author-name">Anjali Verma</div>
+          <div class="author-course">Airhostess Preparation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact-section" id="contact">
+  <div class="section-header reveal">
+    <div class="section-tag">Get In Touch</div>
+    <h2 class="section-title">Start Your <em>Journey</em> Today</h2>
+    <p class="section-sub">Have questions? Drop us a message — we'll get back within 24 hours.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <div class="contact-detail">
+        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+        <div>
+          <h4>Call / WhatsApp</h4>
+          <a href="tel:8826291679">+91 88262 91679</a>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div>
+          <h4>Location</h4>
+          <p>Near Dwarka Mor Metro Station, Delhi</p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+        <div>
+          <h4>Hours</h4>
+          <p>Mon – Sun · Batches Available All Days</p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+        <div>
+          <h4>WhatsApp Us</h4>
+          <a href="https://wa.me/918826291679" target="_blank">Chat with Us on WhatsApp</a>
+        </div>
+      </div>
+      <div class="map-placeholder">
+        <i class="fas fa-map-marked-alt"></i>
+        <p>Near Dwarka Mor Metro Station, Delhi</p>
+      </div>
+    </div>
+
+    <div class="contact-form reveal">
+      <h3>Send Us a Message</h3>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="e.g. Rahul Sharma" />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+91 XXXXX XXXXX" />
+      </div>
+      <div class="form-group">
+        <label>Interested Course</label>
+        <select>
+          <option value="">Select a course...</option>
+          <option>English Spoken & Grammar</option>
+          <option>English Environment Club</option>
+          <option>Airhostess & Ground Staff Preparation</option>
+          <option>German Language (A1–B2)</option>
+          <option>Meet & Speak Weekend Club</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Your Message</label>
+        <textarea placeholder="Tell us about your learning goals..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="submitForm()">
+        <i class="fas fa-paper-plane"></i> Send Message
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">i<span>Fluent</span></div>
+      <div class="footer-tagline">English & German · Speak to Lead</div>
+    </div>
+    <div class="footer-links">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="#courses">English Spoken & Grammar</a></li>
+        <li><a href="#courses">English Environment Club</a></li>
+        <li><a href="#courses">Airhostess Preparation</a></li>
+        <li><a href="#courses">German Language A1–B2</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#why">Why iFluent</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="https://wa.me/918826291679">WhatsApp</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:8826291679">+91 88262 91679</a></li>
+        <li><a href="#">Dwarka Mor, Delhi</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 iFluent Academy. All rights reserved.</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://wa.me/918826291679"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- ── WHATSAPP FLOAT ── -->
+<div class="wa-float">
+  <a class="wa-btn" href="https://wa.me/918826291679?text=Hi%20iFluent!%20I%27d%20like%20to%20know%20more%20about%20your%20courses." target="_blank">
+    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+  </a>
+</div>
+
+<script>
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Stagger card reveals
+  document.querySelectorAll('.why-grid .why-card, .courses-grid .course-card, .testimonials-grid .testi-card').forEach((card, i) => {
+    card.style.transitionDelay = (i * 0.1) + 's';
+  });
+
+  // Form submit
+  function submitForm() {
+    const btn = document.querySelector('.btn-submit');
+    btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+    btn.style.background = 'linear-gradient(135deg, #065f46, #047857)';
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+      btn.style.background = '';
+    }, 3000);
+  }
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.3)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+</body>
+</html>

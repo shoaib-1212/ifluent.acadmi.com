@@ -1,0 +1,97 @@
+:root {
+--navy: #0B1F4B;
+--gold: #C9A84C;
+}
+
+body {
+margin: 0;
+font-family: 'DM Sans', sans-serif;
+}
+
+/* NAV */
+nav {
+position: fixed;
+width: 100%;
+background: var(--navy);
+color: white;
+display: flex;
+justify-content: space-between;
+padding: 15px;
+}
+
+.nav-links {
+display: flex;
+gap: 20px;
+list-style: none;
+}
+
+.nav-links a {
+color: white;
+text-decoration: none;
+}
+
+/* HERO */
+.hero {
+height: 100vh;
+background: linear-gradient(135deg, #0B1F4B, #1a3a8f);
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+
+.btn-primary {
+background: gold;
+padding: 10px 20px;
+border-radius: 30px;
+color: black;
+text-decoration: none;
+}
+
+.btn-secondary {
+border: 1px solid white;
+padding: 10px 20px;
+color: white;
+text-decoration: none;
+}
+
+/* SECTIONS */
+section {
+padding: 80px 20px;
+}
+
+.section-title {
+text-align: center;
+}
+
+/* CARDS */
+.why-grid, .courses-grid {
+display: flex;
+gap: 20px;
+justify-content: center;
+}
+
+.course-card, .why-card {
+padding: 20px;
+border: 1px solid #ddd;
+}
+
+/* BUTTON */
+.btn-submit {
+padding: 10px 20px;
+background: var(--navy);
+color: white;
+border: none;
+}
+
+/* MOBILE */
+.mobile-menu {
+display: none;
+flex-direction: column;
+background: var(--navy);
+}
+
+.mobile-menu.open {
+display: flex;
+}
